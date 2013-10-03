@@ -4,40 +4,54 @@
 <head>
 
 <style>
-.sqr{float:left; width: 50px; height:50px; margin:5px;background-color: #C0C0C0}
+.sqr{float:left; width: 50px; height:50px;}
+.topline{border-top: 3px solid black;}
+.leftLine{border-left: 3px solid black;}
 .clearfix{clear:both;}
+
+/*Styling for win popup*/
+#popup{
+            width:70%;
+            height: 216px;
+            background: green;
+            margin: 50px 50px;
+            position: absolute;
+            clear:both;
+            display:none;
+}
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
 <script src=main.js></script>
 </head>
 
-<body ng-app="" 
-ng-init="ticTacToe=[['','',''], 
-					['','',''], 
-					['','','']];">
-<!-- put in grid -->
+<body ng-app="">
 
-<div id="container" ng-init="myClass=''; 
-ng-controller="FirstController";
-classes = ['X', 'O']; 
-counter=0">
-	<div ng-repeat="row in ticTacToe">
+<div id="container" 
+ng-click="counter = counter + 1"
+ng-controller="ticTacCtrl">
+
+<!-- put in grid -->
+	<div ng-repeat="row in ticTacToe" >
 
 		<!-- put in X's and O's -->
 
-		<div class="sqr" 
-		ng-class="myClass" 
+		<div 
 		ng-repeat="cell in row track by $index" 
-		ng-click="counter = counter + 1; myClass=classes[counter % 2]">
+		ng-click="cell = classes[counter%2]; checkWin()"
+		ng-class="{sqr:true, topline:$parent.$index != 0, leftLine:$index != 0}">
 
-			{{cell + classes[counter % 2]}}
+			{{cell}} ({{$parent.$index}}, {{$index}})
 
 		</div>
 		<div class="clearfix"></div>
 
 	</div>
 </div>
+
+<!-- Winner popup -->
+ <div id="popup">You Won!<button type="button" onclick="reset_board()">Reset!</button>
+ </div>
 </body>
 
 </html>
