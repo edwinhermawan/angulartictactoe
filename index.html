@@ -38,10 +38,10 @@ ng-controller="ticTacCtrl">
 
 		<div 
 		ng-repeat="cell in row track by $index" 
-		ng-click="cell = classes[counter%2]; checkWin()"
+		ng-click="cell = classes[counter%2]; checkWin($parent.$index, $index, cell)"
 		ng-class="{sqr:true, topline:$parent.$index != 0, leftLine:$index != 0}">
 
-			{{cell}} ({{$parent.$index}}, {{$index}})
+			{{cell}}
 
 		</div>
 		<div class="clearfix"></div>

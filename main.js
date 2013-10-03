@@ -6,20 +6,24 @@ function ticTacCtrl($scope){
 
 	$scope.classes = ['X', 'O'];
 	$scope.counter=0;
-	$scope.cell = classes[counter%2];
-	}
 
-	$scope.checkWin = function(){
-		var row=$scope.$parent.$index; 
-		var column =$scope.$index; 
 
-		for(var x=0;x<=2;x+=1){
-			if(((row==0),(column==x)) == ((row==1),(column==x)) &&
-			((row==1),(column==x)) == ((row==2),(column==x)) && 
-			((row==0),(column==x)) !== ""){
-		document.getElementById("popup").style.display="block";}
-		// alert(ticTacToe[0]{{x}} + " won in column " +( (x==)
+	$scope.checkWin = function(row, column, holder){ 
 		
+		this.ticTacToe[row] [column] = holder;
+		
+		for(var x=0;x<=2;x+=1){
+			if(this.ticTacToe[x][0] == this.ticTacToe[x][1] &&
+			this.ticTacToe[x][1] == this.ticTacToe[x][2] && 
+			this.ticTacToe[x][1] !== ""){
+			document.getElementById("popup").style.display="block";}
+		
+			if(this.ticTacToe[0][x] == this.ticTacToe[1][x] &&
+			this.ticTacToe[1][x] == this.ticTacToe[2][x] && 
+			this.ticTacToe[1][x] !== ""){
+			document.getElementById("popup").style.display="block";}
+		// alert(ticTacToe[0]{{x}} + " won in column " +( (x==)
+	
 		// if((row==x,column==0) == (row==x,column==1}}) &&
 		// row({{x}},column{{1}}) == row({{x}},columncolumn{{2}}) && 
 		// row({{x}},column{{0}}) != ""){
