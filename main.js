@@ -1,16 +1,16 @@
 // Controller for win condition
 function ticTacCtrl($scope){
-	$scope.ticTacToe=[['','x',''], 
+	$scope.ticTacToe=[['','',''], 
 					['','',''], 
 					['','','']];
 
 	$scope.classes = ['X', 'O'];
 	$scope.counter=0;
-
+	
 
 	$scope.checkWin = function(row, column, holder){ 
 		
-		this.ticTacToe[row] [column] = holder;
+		this.ticTacToe[row][column] = holder;
 		
 		for(var x=0;x<=2;x+=1){
 			if(this.ticTacToe[x][0] == this.ticTacToe[x][1] &&
